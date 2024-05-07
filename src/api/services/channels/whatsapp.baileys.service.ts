@@ -3193,21 +3193,9 @@ export class BaileysStartupService extends ChannelStartupService {
       const fetch = Object.values(await this.client.groupFetchAllParticipating());
       let groups = [];
       for (const group of fetch) {
-        const picture = await this.profilePicture(group.id);
-
         const result = {
           id: group.id,
-          subject: group.subject,
-          subjectOwner: group.subjectOwner,
-          subjectTime: group.subjectTime,
-          pictureUrl: picture.profilePictureUrl,
-          size: group.participants.length,
-          creation: group.creation,
-          owner: group.owner,
-          desc: group.desc,
-          descId: group.descId,
-          restrict: group.restrict,
-          announce: group.announce,
+          name: group.subject,
         };
 
         if (getParticipants.getParticipants == 'true') {
