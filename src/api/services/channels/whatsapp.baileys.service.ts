@@ -1819,6 +1819,11 @@ export class BaileysStartupService extends ChannelStartupService {
             throw new NotFoundException('Group not found');
           }
 
+          if (group.announce) {
+            this.logger.verbose('Group is announce');
+            return { error: 1 };
+          }
+
           if (options?.mentions) {
             this.logger.verbose('Mentions defined');
 
